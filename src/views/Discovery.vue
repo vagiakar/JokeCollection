@@ -18,7 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1>Discovery</h1>
+  <h2 class="text-2xl font-bold text-center p-4">Discover new jokes!</h2>
   <select v-model="selectedType" @change="fetchJoke">
     <option value="random">Random Joke</option>
     <option value="programming">Programming Joke</option>
