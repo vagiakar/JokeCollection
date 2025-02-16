@@ -10,6 +10,7 @@ export function useFetchJoke(selectedType: Ref<JokeType>) {
   const fetchJoke = async () => {
     loading.value = true
     errorMessage.value = null
+    joke.value = null
     const url = selectedType.value === 'random' ? API_URLS.randomJoke : API_URLS.programmingJoke
 
     try {
