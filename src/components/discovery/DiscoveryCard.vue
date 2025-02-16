@@ -1,26 +1,25 @@
 <script setup lang="ts">
-import { type JokeType } from '@/types/JokeTypes'
-import { ref } from 'vue'
+import { type Joke } from '@/types/JokeTypes'
+
 import { storeToRefs } from 'pinia'
-import { useFetchJoke } from '@/composables/useFetchJoke'
+
 import { useCollectionStore } from '@/stores/useCollectionStore'
 
 const props = defineProps<{
-  selectedType: JokeType
+  joke: Joke
+  fetchJoke: () => void
 }>()
 
 const store = useCollectionStore()
 const { jokeCollection } = storeToRefs(store)
 const { saveJoke } = store
-
-const { joke, fetchJoke } = useFetchJoke(ref(props.selectedType))
 </script>
 
 <template>
   <div class="bg-white rounded-lg p-4 mt-4">
-    <p class="text-gray-600 text-xl"><strong>Joke Type:</strong> {{ joke?.type }}</p>
-    <h3 class="text-2xl font-bold mb-4">{{ joke?.setup }}</h3>
-    <p class="text-gray-600">{{ joke?.punchline }}</p>
+    <p class="text-gray-600 text-xl"><strong>Joke Type:</strong> {{ joke.type }}</p>
+    <h3 class="text-2xl font-bold mb-4">{{ joke.setup }}</h3>
+    <p class="text-gray-600">{{ joke.punchline }}</p>
     <div v-if="joke" class="flex justify-between mt-4">
       <button
         class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
