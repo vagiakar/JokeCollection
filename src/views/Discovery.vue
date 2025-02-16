@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useFetchJoke } from '@/composables/useFetchJoke'
 import type { JokeType } from '@/types/JokeTypes'
 import { useCollectionStore } from '@/stores/useCollectionStore'
+import { storeToRefs } from 'pinia'
 
 const selectedType = ref<JokeType>('random')
-const { saveJoke, loadJokesFromStorage, jokeCollection } = useCollectionStore()
+const store = useCollectionStore()
+const { saveJoke, loadJokesFromStorage, removeJoke } = store
+const { jokeCollection } = storeToRefs(store)
 
 const { joke, loading, errorMessage, fetchJoke } = useFetchJoke(selectedType)
 
@@ -28,5 +31,10 @@ onMounted(() => {
     <p>{{ joke?.punchline }}</p>
   </div>
   <button @click="fetchJoke">Get a New Joke</button>
-  <button @click="saveJoke(joke)" v-if="joke !== null">Save to collection</button>
+  <div v-if="joke">
+    <button v-if="!jokeCollection.some((j) => j.id === joke?.id)" @click="saveJoke(joke)">
+      Save to collection
+    </button>
+    <button v-else @click="removeJoke(joke)">Remove from collection</button>
+  </div>
 </template>

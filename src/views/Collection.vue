@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { useCollectionStore } from '@/stores/useCollectionStore'
+import { storeToRefs } from 'pinia'
 
-const { jokeCollection } = useCollectionStore()
+const store = useCollectionStore()
+const { jokeCollection } = storeToRefs(store)
+const { removeJoke } = store
 </script>
 
 <template>
@@ -12,6 +15,7 @@ const { jokeCollection } = useCollectionStore()
         <p><strong>Joke Type:</strong> {{ joke.type }}</p>
         <h3>{{ joke.setup }}</h3>
         <p>{{ joke.punchline }}</p>
+        <button @click="removeJoke(joke)">Remove from collection</button>
       </li>
     </ul>
   </div>
