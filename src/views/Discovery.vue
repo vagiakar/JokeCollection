@@ -1,10 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useFetchJoke } from '@/composables/useFetchJoke'
 import type { JokeType } from '@/types/JokeTypes'
+import { useCollectionStore } from '@/stores/useCollectionStore'
 
 const selectedType = ref<JokeType>('random')
+const { saveJoke, loadJokesFromStorage, jokeCollection } = useCollectionStore()
+
 const { joke, loading, errorMessage, fetchJoke } = useFetchJoke(selectedType)
+
+onMounted(() => {
+  loadJokesFromStorage()
+})
 </script>
 
 <template>
@@ -21,4 +28,5 @@ const { joke, loading, errorMessage, fetchJoke } = useFetchJoke(selectedType)
     <p>{{ joke?.punchline }}</p>
   </div>
   <button @click="fetchJoke">Get a New Joke</button>
+  <button @click="saveJoke(joke)" v-if="joke !== null">Save to collection</button>
 </template>
