@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { type Joke } from '@/types/JokeTypes'
+import { type Joke, type SavedJoke } from '@/types/JokeTypes'
+import { StarIcon } from '@heroicons/vue/24/solid'
 
 const props = defineProps<{
-  joke: Joke
+  joke: SavedJoke
 }>()
 
 import { useCollectionStore } from '@/stores/useCollectionStore'
+import Rating from '@/components/collection/Rating.vue'
 
 const store = useCollectionStore()
 
@@ -14,7 +16,10 @@ const { removeJoke } = store
 
 <template>
   <div class="bg-white rounded-lg p-4 mt-4">
-    <p class="text-gray-600 text-xl"><strong>Joke Type:</strong> {{ joke.type }}</p>
+    <div>
+      <p class="text-gray-600 text-xl"><strong>Joke Type:</strong> {{ joke.type }}</p>
+      <Rating :joke="joke" />
+    </div>
     <h3 class="text-2xl font-bold mb-4">{{ joke.setup }}</h3>
     <p class="text-gray-600">{{ joke.punchline }}</p>
 

@@ -1,10 +1,11 @@
 import type { Joke } from '@/types/JokeTypes'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { type SavedJoke } from '@/types/JokeTypes'
 
 export const useCollectionStore = defineStore('jokesCollection', () => {
   const getJokesFromStorage = () => JSON.parse(localStorage.getItem('jokeCollection') || '[]')
-  const jokeCollection = ref<Joke[]>(getJokesFromStorage())
+  const jokeCollection = ref<SavedJoke[]>(getJokesFromStorage())
 
   const loadJokesFromStorage = () => {
     jokeCollection.value = getJokesFromStorage()
@@ -27,5 +28,13 @@ export const useCollectionStore = defineStore('jokesCollection', () => {
     saveJokesToStorage()
   }
 
-  return { jokeCollection, saveJoke, loadJokesFromStorage, removeJoke }
+  const addStars = (jokeId: string, stars: number) => {
+    const jokeIndex = jokeCollection.value.findIndex((joke) => joke.id === jokeId)
+    if (jokeIndex !== -1) {
+      jokeCollection.value[jokeIndex].stars = stars
+    }
+    saveJokesToStorage()
+  }
+
+  return { jokeCollection, saveJoke, loadJokesFromStorage, removeJoke, addStars }
 })

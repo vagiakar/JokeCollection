@@ -6,3 +6,7 @@ export interface Joke {
 }
 
 export type JokeType = 'random' | 'programming'
+
+export interface SavedJoke extends Joke {
+  stars?: number
+}
