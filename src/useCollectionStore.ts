@@ -1,7 +1,7 @@
-import type { Joke } from '@/types/JokeTypes'
+import type { Joke } from '@/types'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { type SavedJoke } from '@/types/JokeTypes'
+import { type SavedJoke } from '@/types'
 
 export const useCollectionStore = defineStore('jokesCollection', () => {
   const getJokesFromStorage = () => JSON.parse(localStorage.getItem('jokeCollection') || '[]')

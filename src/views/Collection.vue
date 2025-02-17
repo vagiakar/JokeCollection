@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { useCollectionStore } from '@/stores/useCollectionStore'
+import { useCollectionStore } from '@/useCollectionStore'
 import CollectionCard from '@/components/collection/CollectionCard.vue'
 
 const store = useCollectionStore()

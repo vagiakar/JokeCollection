@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { type SavedJoke } from '@/types/JokeTypes'
-import { useCollectionStore } from '@/stores/useCollectionStore'
+import { type SavedJoke } from '@/types'
+import { useCollectionStore } from '@/useCollectionStore'
 
 const props = defineProps<{
   joke: SavedJoke

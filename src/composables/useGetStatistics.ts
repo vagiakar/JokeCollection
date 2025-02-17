@@ -1,4 +1,4 @@
-import { useCollectionStore } from '@/stores/useCollectionStore'
+import { useCollectionStore } from '@/useCollectionStore'
 import { storeToRefs } from 'pinia'
 
 export function useGetStatistics() {

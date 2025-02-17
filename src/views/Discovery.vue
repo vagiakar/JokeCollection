@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useFetchJoke } from '@/composables/useFetchJoke'
-import type { JokeType } from '@/types/JokeTypes'
-import { useCollectionStore } from '@/stores/useCollectionStore'
+import type { JokeType } from '@/types'
+import { useCollectionStore } from '@/useCollectionStore'
 import DiscoveryCard from '@/components/discovery/DiscoveryCard.vue'
 import Select from '@/components/Select.vue'
 

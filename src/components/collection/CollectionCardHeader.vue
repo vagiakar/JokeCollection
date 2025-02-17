@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Rating from '@/components/collection/Rating.vue'
-import { type SavedJoke } from '@/types/JokeTypes'
+import { type SavedJoke } from '@/types'
 import JokeTypeHeading from '@/components/JokeTypeHeading.vue'
 
 const props = defineProps<{

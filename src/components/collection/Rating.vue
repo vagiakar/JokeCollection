@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { StarIcon } from '@heroicons/vue/24/solid'
-import { useCollectionStore } from '@/stores/useCollectionStore'
-import type { SavedJoke } from '@/types/JokeTypes'
+import { useCollectionStore } from '@/useCollectionStore'
+import type { SavedJoke } from '@/types'
 
 const props = defineProps<{
   joke: SavedJoke

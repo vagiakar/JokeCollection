@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type SavedJoke } from '@/types/JokeTypes'
+import { type SavedJoke } from '@/types'
 
 import CardHeader from '@/components/JokeTypeHeading.vue'
 import CollectionCardContent from './CollectionCardContent.vue'

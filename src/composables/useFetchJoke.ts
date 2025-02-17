@@ -1,6 +1,6 @@
 import { ref, onMounted, watch, type Ref } from 'vue'
-import { type Joke, type JokeType } from '@/types/JokeTypes'
-import { API_URLS } from '@/constants/apiUrls'
+import { type Joke, type JokeType } from '@/types'
+import { API_URLS } from '@/apiUrls'
 
 export function useFetchJoke(selectedType: Ref<JokeType>) {
   const joke = ref<Joke | null>(null)
