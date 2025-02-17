@@ -48,11 +48,11 @@ const { saveJoke } = store
         <button
           v-if="!jokeCollection.some((j) => j.id === joke?.id)"
           @click="saveJoke(joke)"
-          class="bg-orange-400 hover:bg-orange-500 text-gray-800 font-bold py-2 px-4 rounded"
+          class="bg-green-400 hover:bg-green-500 text-gray-800 font-bold py-2 px-4 rounded ml-4"
         >
           Save to collection
         </button>
-        <p v-else class="text-orange-600 font-bold py-2 px-4 rounded">In collection</p>
+        <p v-else class="text-green-600 font-bold py-2 px-4 rounded">In collection</p>
       </div>
     </div>
   </div>
