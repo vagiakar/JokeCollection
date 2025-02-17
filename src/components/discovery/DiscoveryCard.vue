@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { type Joke } from '@/types'
 import CardHeader from '@/components/JokeTypeHeading.vue'
+import ErrorCardContent from './ErrorCardContent.vue'
 import DiscoveryCardContent from './DiscoveryCardContent.vue'
 import DiscoveryCardFooter from './DiscoveryCardFooter.vue'
 
