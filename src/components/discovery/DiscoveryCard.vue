@@ -6,8 +6,9 @@ import { storeToRefs } from 'pinia'
 import { useCollectionStore } from '@/stores/useCollectionStore'
 
 const props = defineProps<{
-  joke: Joke
+  joke: Joke | null
   fetchJoke: () => void
+  loading: boolean
 }>()
 
 const store = useCollectionStore()
@@ -17,9 +18,14 @@ const { saveJoke } = store
 
 <template>
   <div class="bg-white rounded-lg p-4 mt-4">
-    <p class="text-gray-600 text-xl"><strong>Joke Type:</strong> {{ joke.type }}</p>
-    <h3 class="text-2xl font-bold mb-4">{{ joke.setup }}</h3>
-    <p class="text-gray-600">{{ joke.punchline }}</p>
+    <div v-if="loading">...loading</div>
+    <p class="text-gray-600 text-xl" v-if="joke"><strong>Joke Type:</strong> {{ joke.type }}</p>
+    <transition name="fade-setup">
+      <h3 v-if="joke" class="text-2xl font-bold mb-4">{{ joke.setup }}</h3>
+    </transition>
+    <transition name="fade-punchline">
+      <p v-if="joke" class="text-gray-600">{{ joke.punchline }}</p>
+    </transition>
     <div v-if="joke" class="flex justify-between mt-4">
       <button
         class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
@@ -40,3 +46,24 @@ const { saveJoke } = store
     </div>
   </div>
 </template>
+
+<style scoped>
+.fade-setup-enter-active {
+  transition: all 1s ease-in;
+}
+.fade-setup-enter-from {
+  opacity: 0;
+}
+.fade-setup-enter-to {
+  opacity: 1;
+}
+.fade-punchline-enter-active {
+  transition: all 2.5s ease-in;
+}
+.fade-punchline-enter-from {
+  opacity: 0;
+}
+.fade-punchline-enter-to {
+  opacity: 1;
+}
+</style>

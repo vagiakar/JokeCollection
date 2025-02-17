@@ -10,7 +10,7 @@ const selectedType = ref<JokeType>('random')
 const store = useCollectionStore()
 const { loadJokesFromStorage } = store
 
-const { joke, loading, errorMessage, fetchJoke } = useFetchJoke(selectedType)
+const { loading, joke, errorMessage, fetchJoke } = useFetchJoke(selectedType)
 
 onMounted(() => {
   loadJokesFromStorage()
@@ -29,9 +29,8 @@ onMounted(() => {
     v-model="selectedType"
     @change="fetchJoke"
   ></Select>
-  <div v-if="loading || !joke">Loading...</div>
-  <div v-else-if="errorMessage">{{ errorMessage }}</div>
+  <div v-if="errorMessage">{{ errorMessage }}</div>
   <div v-else>
-    <DiscoveryCard :joke="joke" :fetchJoke="fetchJoke" />
+    <DiscoveryCard :loading="loading" :joke="joke" :fetchJoke="fetchJoke" />
   </div>
 </template>
