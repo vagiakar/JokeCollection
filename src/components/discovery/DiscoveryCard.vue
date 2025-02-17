@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { type Joke } from '@/types/JokeTypes'
-
 import { storeToRefs } from 'pinia'
-
+import { type Joke } from '@/types/JokeTypes'
 import { useCollectionStore } from '@/stores/useCollectionStore'
 
 const props = defineProps<{

@@ -14,7 +14,6 @@ interface Props {
 const props = defineProps<Props>()
 
 const emit = defineEmits(['update:modelValue'])
-
 const handleChange = (event: Event) => {
   const target = event.target as HTMLSelectElement
   emit('update:modelValue', target.value)

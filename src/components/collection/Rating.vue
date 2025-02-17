@@ -2,11 +2,12 @@
 import { StarIcon } from '@heroicons/vue/24/solid'
 import { useCollectionStore } from '@/stores/useCollectionStore'
 import type { SavedJoke } from '@/types/JokeTypes'
-const store = useCollectionStore()
-const { addStars } = store
+
 const props = defineProps<{
   joke: SavedJoke
 }>()
+
+const { addStars } = useCollectionStore()
 </script>
 
 <template>
