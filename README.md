@@ -1,20 +1,34 @@
 # JokeCollection
 
-This template should help get you started developing with Vue 3 in Vite.
+## Project Overview
 
-## Recommended IDE Setup
+This project is built using Vue and fetches jokes from the Official Joke API. It uses Vite for bundling, Tailwind CSS for styling, and TypeScript for type safety. Users can save fetched jokes to localStorage, and Pinia is used for state management, allowing easy access to saved jokes throughout the app.Vue Router is used for handling navigation, with two main routes:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Discovery: Where users can fetch new jokes.
 
-## Type Support for `.vue` Imports in TS
+- Collection: Where users can view and manage saved jokes stored in localStorage.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Features added
 
-## Customize configuration
+### 1. Jokes
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- Fetch and display random jokes
+- Toggle between random jokes and programming jokes
+- Display joke setup and punchline with a reveal animation
+- Show loading states during API calls
+- Handle API errors gracefully
 
-## Project Setup
+### 2. Joke Collection
+
+- Save favorite jokes to a personal collection
+- Remove jokes from the collection
+- Persist collection in localStorage
+- Rate jokes (1-5 stars)
+- Display collection statistics:
+  - Total jokes saved
+  - Average rating
+
+## How to run
 
 ```sh
 npm install
@@ -24,18 +38,6 @@ npm install
 
 ```sh
 npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
