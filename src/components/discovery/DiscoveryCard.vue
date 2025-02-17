@@ -2,6 +2,7 @@
 import { type Joke } from '@/types'
 import CardHeader from '@/components/JokeTypeHeading.vue'
 import DiscoveryCardContent from './DiscoveryCardContent.vue'
+import DiscoveryCardFooter from './DiscoveryCardFooter.vue'
 
 const props = defineProps<{
   joke: Joke | null
@@ -19,5 +20,6 @@ const props = defineProps<{
     </div>
     <CardHeader :joke="joke" />
     <DiscoveryCardContent :joke="joke" />
+    <DiscoveryCardFooter :joke="joke" :fetchJoke="fetchJoke" />
   </div>
 </template>
