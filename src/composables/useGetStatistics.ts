@@ -11,7 +11,8 @@ export function useGetStatistics() {
     if (ratedJokes.length === 0) return
 
     const total = ratedJokes.reduce((acc, curr) => acc + (curr?.stars || 0), 0)
-    return total / ratedJokes.length
+    const average = total / ratedJokes.length
+    return Number(average.toFixed(2))
   }
 
   return { getJokeCount, getAverageStars }
