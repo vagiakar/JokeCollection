@@ -1,31 +1,19 @@
 <script setup lang="ts">
 import { type SavedJoke } from '@/types/JokeTypes'
-import { useCollectionStore } from '@/stores/useCollectionStore'
-import Rating from '@/components/collection/Rating.vue'
+
+import CardHeader from '@/components/JokeTypeHeading.vue'
+import CollectionCardContent from './CollectionCardContent.vue'
+import CollectionCardFooter from './CollectionCardFooter.vue'
 
 const props = defineProps<{
   joke: SavedJoke
 }>()
-
-const store = useCollectionStore()
-const { removeJoke } = store
 </script>
 
 <template>
   <div class="bg-white rounded-lg p-4 mt-4">
-    <div>
-      <p class="text-gray-600 text-xl"><strong>Joke Type:</strong> {{ joke.type }}</p>
-      <Rating :joke="joke" />
-    </div>
-    <h3 class="text-2xl font-bold mb-4">{{ joke.setup }}</h3>
-    <p class="text-gray-600">{{ joke.punchline }}</p>
-    <div v-if="joke" class="flex justify-end mt-4">
-      <button
-        class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded"
-        @click="removeJoke(joke)"
-      >
-        Remove from collection
-      </button>
-    </div>
+    <CardHeader :joke="joke" />
+    <CollectionCardContent :joke="joke" />
+    <CollectionCardFooter :joke="joke" />
   </div>
 </template>
