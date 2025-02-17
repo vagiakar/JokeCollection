@@ -29,8 +29,10 @@ onMounted(() => {
     v-model="selectedType"
     @change="fetchJoke"
   ></Select>
-  <div v-if="errorMessage">{{ errorMessage }}</div>
-  <div v-else>
-    <DiscoveryCard :loading="loading" :joke="joke" :fetchJoke="fetchJoke" />
-  </div>
+  <DiscoveryCard
+    :errorMessage="errorMessage"
+    :loading="loading"
+    :joke="joke"
+    :fetchJoke="fetchJoke"
+  />
 </template>
