@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { type SavedJoke } from '@/types'
 
-import CardHeader from '@/components/JokeTypeHeading.vue'
 import CollectionCardContent from './CollectionCardContent.vue'
 import CollectionCardFooter from './CollectionCardFooter.vue'
 import CollectionCardHeader from './CollectionCardHeader.vue'
