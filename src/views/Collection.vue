@@ -9,7 +9,13 @@ const { jokeCollection } = storeToRefs(store)
 
 <template>
   <div v-if="jokeCollection.length > 0">
-    <h2 class="text-2xl text-gray-200 font-bold text-center p-4">Your saved jokes</h2>
+    <h2 class="text-2xl text-gray-200 font-bold text-center p-4">Your saved jokes!</h2>
+    <RouterLink
+      to="/collection/statistics"
+      class="bg-orange-400 hover:bg-orange-500 text-gray-800 font-bold py-2 px-4 rounded"
+    >
+      Check statistics
+    </RouterLink>
     <ul>
       <li v-for="joke in jokeCollection" :key="joke.id">
         <CollectionCard :joke="joke" />
